@@ -1,0 +1,28 @@
+.comment_box{
+    display: flex;
+    justify-content: space-around;
+    width: 20%;
+    align-items: center;
+    box-shadow: 2px 2px 5px black;
+    margin: 1rem;
+}
+
+.delete-button {
+    background-color: #ff4d4d; /* Red background color */
+    color: #fff; /* White text color */
+    border: none; /* No border */
+    padding: 8px 16px; /* Padding */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Cursor style */
+    font-size: 14px; /* Font size */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s ease; /* Smooth color transition */
+}
+
+.delete-button:hover {
+    background-color: #ff6666; /* Darker red on hover */
+}
+
+.delete-button:active {
+    background-color: #e60000; /* Even darker red when button is clicked */
+}
