@@ -12,14 +12,23 @@ const App2 = () => {
     const submitFunc =()=>{
         setAllCom((preCom)=>[...preCom,singleCom])
     }
+
+    const deleteFunc =(key1)=>{
+const filter = allCom.filter((item, key2)=>key1!== key2)
+setAllCom(filter)
+    }
   return (
     <div>
 <input type='text' value={singleCom} onChange={inputFunc}/>
 <button onClick={submitFunc}>Submit</button>
 <div>
     {
-        allCom && allCom.map((val)=>(
+      
+        allCom && allCom.map((val,key1)=>(
+            <div className=''>
          <p>{val}</p>   
+         <button onClick={()=>deleteFunc(key1)}>X</button>
+         </div>
         ))
     }
 </div>

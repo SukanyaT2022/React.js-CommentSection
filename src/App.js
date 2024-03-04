@@ -2,16 +2,20 @@ import './App.css';
 import { useState } from 'react';
 
 function App() {
+let temp_date = new Date();// time
 const [singleCom, setSingleCom] = useState('')
 const [storeAllcom, setStoreAllCom] = useState([])
+const [myDate,setMyDate] = useState(`${temp_date.getHours()}:${temp_date.getMinutes()}:${temp_date.getSeconds()}`);//time
 
 const inputFunc =(e)=>{
 setSingleCom(e.target.value)
 }
  const submitFunc =(e)=>{
+  console.log(myDate)
+
     e.preventDefault();
     setSingleCom("")
-    setStoreAllCom((prevComment)=>[...prevComment,singleCom]);
+    setStoreAllCom((prevComment)=>[...prevComment,{comment:singleCom,myDate:myDate}]);//time
     console.log(storeAllcom)
  }
 
@@ -30,14 +34,16 @@ const sortHandler = ()=>{
     <div className="App">
      <h2>Comment</h2>
      <p>Why1?</p>
+     {/* <div>Time: {`${myDate.getHours()}:${myDate.getMinutes()}:${myDate.getSeconds()}}`}</div> */}
       <input type='text' value={singleCom} onChange={inputFunc}/>
       <button onClick={submitFunc}>Submit</button>
       <button onClick={sortHandler}>Sort</button>
       <div className='WrapCommentBox'>
       {
-        storeAllcom && storeAllcom.map((comment,key)=>(
+        storeAllcom && storeAllcom.map((val,key)=>(
           <div className='comment_box' key={key}>
-              <p>{comment}</p>
+              <p>{val.comment}</p>
+              <p>{val.myDate}</p>
               <button className='delete-button' onClick={()=>deleteHandler(key)}>X</button>
           </div>
           ))
