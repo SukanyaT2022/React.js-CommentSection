@@ -25,7 +25,9 @@ const deleteHandler = (id)=>{
 } 
 
 const sortHandler = ()=>{
-  const sort = [...storeAllcom].sort();
+  const sort = [...storeAllcom].sort((a, b) => {
+    return new Date(a.myDate) - new Date(b.myDate);
+  });
   setStoreAllCom(sort)
 }
 
