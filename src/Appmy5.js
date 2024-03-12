@@ -3,12 +3,15 @@ import React, { useState } from 'react'
 const Appmy5 = () => {
     const [singleItem, setSingleItem] = useState('')
     const [allItem, setAllItem] = useState([])
+    const showDate = new Date()
+    const [myDate, setMyDate]= useState(`${showDate.getHours()}:${showDate.getMinutes()}: ${showDate.getSeconds()}`)
 
  const inputFunc =(e)=>{
 setSingleItem(e.target.value)
     }
-const submitFunc =()=>{
-    setAllItem((preCom)=>[...preCom,singleItem])
+const submitFunc =(e)=>{
+  e.preventDefault();
+    setAllItem((preCom)=>[...preCom,{comment:singleItem, clock:myDate}])
     setSingleItem('')
 }
 const deleteFunc =(key1)=>{
@@ -24,8 +27,9 @@ setAllItem(storeFilter)
 <div>
 {
 allItem.map((val,key1)=>(
-    <div>
-<p>{val}</p>
+  <div className='mainBox' key1={key1}>
+<p>{val.comment}</p>
+<p>{val.clock}</p>
 <button onClick={()=>deleteFunc(key1)}>Delete</button>
 </div>
 ))
